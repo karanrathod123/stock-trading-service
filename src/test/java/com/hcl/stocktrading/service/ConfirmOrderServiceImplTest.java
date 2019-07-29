@@ -101,13 +101,11 @@ public class ConfirmOrderServiceImplTest {
 	
 	@Test(expected=ResourceNotFoundException.class)
 	public void testConfirmOrderStockIdNotFound() {
-		//Mockito.when(stocksRepository.findByStockId(2L)).thenThrow(ResourceNotFoundException.class);
 		confirmOrderServiceImpl.confirmOrder(confirmOrderDto);
 	}
 	
 	@Test(expected=ResourceNotFoundException.class)
 	public void testConfirmOrderUserIdNotFound() {
-		//Mockito.when(userRepository.findByUserId(2L)).thenThrow(ResourceNotFoundException.class);
 		confirmOrderServiceImpl.confirmOrder(confirmOrderDto);
 	}
 
