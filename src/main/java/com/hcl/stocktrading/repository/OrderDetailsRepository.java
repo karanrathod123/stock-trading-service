@@ -1,6 +1,5 @@
 package com.hcl.stocktrading.repository;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import com.hcl.stocktrading.dto.OrderHistoryDto;
 import com.hcl.stocktrading.dto.QuoteOrderDto;
 import com.hcl.stocktrading.entity.OrderDetails;
 import com.hcl.stocktrading.entity.Stocks;
-import com.hcl.stocktrading.entity.User;
 
 @Repository
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long> {
@@ -23,8 +21,5 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
 	public void save(QuoteOrderDto quoteOrderDto);
 
 	public Stocks findByStockId(OrderDetails orderDetails);
-
-
-
 
 }
