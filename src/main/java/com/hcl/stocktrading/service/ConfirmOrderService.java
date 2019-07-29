@@ -1,5 +1,7 @@
 package com.hcl.stocktrading.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -61,7 +63,7 @@ public class ConfirmOrderService {
 		Double stockPurchasePrice = marketPrice*confirmOrderDto.getPurchaseVolume();
 		orderDetails.setStockPurchasePrice(stockPurchasePrice);
 		orderDetails.setTotalAmount(fees+stockPurchasePrice);
-		
+		orderDetails.setTimeOfTrade(LocalDate.now());
 		
 		orderDetailsRepository.save(orderDetails);
 		
