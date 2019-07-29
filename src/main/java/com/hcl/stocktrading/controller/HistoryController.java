@@ -14,18 +14,12 @@ import com.hcl.stocktrading.service.HistoryServiceImpl;
 public class HistoryController {
 
 	@Autowired
-	HistoryServiceImpl historyServiceImpl;
+	private HistoryServiceImpl historyServiceImpl;
 
 	@GetMapping("/pastorders")
 	public ResponseEntity<Object> getPastOrder(@RequestBody OrderHistoryDto orderHistoryDto) {
 		ResponseData response = historyServiceImpl.getPastOrders(orderHistoryDto);
 		return new ResponseEntity<>(response, response.getHttpStatus());
 	}
-<<<<<<< HEAD
 
 }
-=======
-	
-	
-}
->>>>>>> 7a057dd8c84e91de66c5714ba5c3eb497a6e10ed

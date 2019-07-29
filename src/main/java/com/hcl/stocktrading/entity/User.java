@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,13 +19,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
-	
+
 	private String name;
-	
+
 	private String mobile;
-	
+
 	private String email;
-	
+
 	@OneToMany(mappedBy = "userId")
 	@JsonIgnore
 	private List<OrderDetails> orderDetails;
