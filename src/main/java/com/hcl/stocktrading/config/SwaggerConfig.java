@@ -1,4 +1,4 @@
-package com.hcl.service.config;
+package com.hcl.stocktrading.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
