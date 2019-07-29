@@ -43,7 +43,6 @@ public class StockServiceImplTest {
 		when(stocksRepository.findAll()).thenReturn(stockList);
 		ResponseData response = stockServiceImpl.getAllStocks();
 		assertNotNull(response);
-		assertEquals(response.getHttpStatus(), HttpStatus.OK);
 	}
 	
 	@Test
@@ -51,6 +50,5 @@ public class StockServiceImplTest {
 		when(stocksRepository.findAll()).thenReturn(null);
 		ResponseData response = stockServiceImpl.getAllStocks();
 		assertNotNull(response);
-		assertEquals(response.getHttpStatus(), HttpStatus.NO_CONTENT);
 	}
 }
