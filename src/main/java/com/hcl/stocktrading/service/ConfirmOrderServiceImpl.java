@@ -53,7 +53,7 @@ public class ConfirmOrderServiceImpl {
 		}
 		else if(confirmOrderDto.getPurchaseVolume()>=500) {
 			Double percentage = (marketPrice*0.15)/100;
-			Double per100Shares = confirmOrderDto.getPurchaseVolume()/100*1.0;
+			Double per100Shares = confirmOrderDto.getPurchaseVolume()/(double)100*1.0;
 			fees = percentage*stocks.getPrice()*per100Shares;
 			orderDetails.setFees(fees);
 		}
