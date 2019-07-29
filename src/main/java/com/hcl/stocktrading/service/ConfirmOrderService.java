@@ -1,9 +1,11 @@
 package com.hcl.stocktrading.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.hcl.stocktrading.dto.ConfirmOrderDto;
+import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.OrderDetails;
 import com.hcl.stocktrading.entity.Stocks;
 import com.hcl.stocktrading.entity.User;
@@ -17,7 +19,7 @@ import com.hcl.stocktrading.repository.UserRepository;
 public class ConfirmOrderService {
 
 	@Autowired
-	OrderDetailsRepository confirmOrderRepository;
+	OrderDetailsRepository orderDetailsRepository;
 	
 	@Autowired
 	StocksRepository stocksRepository;
@@ -60,6 +62,12 @@ public class ConfirmOrderService {
 		orderDetails.setStockPurchasePrice(stockPurchasePrice);
 		orderDetails.setTotalAmount(fees+stockPurchasePrice);
 		
+		
+		orderDetailsRepository.save(orderDetails);
+		
+		ResponseData responseData = new ResponseData();
+		responseData.setData(orderDetails);
+		responseData.setHttpStatus(HttpStatus.OK);
 		return orderDetails; 
 		
 	}
