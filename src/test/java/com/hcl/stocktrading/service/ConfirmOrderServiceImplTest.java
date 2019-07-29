@@ -16,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.hcl.stocktrading.dto.ConfirmOrderDto;
 import com.hcl.stocktrading.dto.OrderHistoryDto;
+import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.OrderDetails;
 import com.hcl.stocktrading.entity.Stocks;
 import com.hcl.stocktrading.entity.User;
@@ -45,6 +46,8 @@ public class ConfirmOrderServiceImplTest {
 	ConfirmOrderDto confirmOrderDto;
 	List<OrderDetails> list;
 	OrderHistoryDto orderHistoryDto;
+	
+	ResponseData responseData;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -82,11 +85,13 @@ public class ConfirmOrderServiceImplTest {
 		
 		orderHistoryDto = new OrderHistoryDto();
 		orderHistoryDto.setFees(100.00);
-		orderHistoryDto.setOrderId(1L);
 		orderHistoryDto.setPurchasedVolume(100L);
 		orderHistoryDto.setStockPrice(1000.0);
 		orderHistoryDto.setStockPurchasePrice(100000.0);
 		orderHistoryDto.setTotalAmount(100100.0);
+		
+		responseData= new ResponseData();
+		responseData.setData(orderHistoryDto);
 		
 	}
 
@@ -95,8 +100,8 @@ public class ConfirmOrderServiceImplTest {
 		Mockito.when(stocksRepository.findByStockId(1L)).thenReturn(stocks);
 		Mockito.when(userRepository.findByUserId(1L)).thenReturn(user);
 		
-		OrderDetails expected = confirmOrderServiceImpl.confirmOrder(confirmOrderDto);
-		assertEquals(orderDetails, expected);
+		ResponseData expected = confirmOrderServiceImpl.confirmOrder(confirmOrderDto);
+		assertEquals(orderHistoryDto, expected.getData());
 	}
 	
 	@Test(expected=ResourceNotFoundException.class)

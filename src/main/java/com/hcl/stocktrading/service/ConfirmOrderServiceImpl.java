@@ -31,7 +31,7 @@ public class ConfirmOrderServiceImpl implements ConfirmOrderService {
 	UserRepository userRepository;
 	
 	@Override
-	public OrderDetails confirmOrder(ConfirmOrderDto confirmOrderDto) {
+	public ResponseData confirmOrder(ConfirmOrderDto confirmOrderDto) {
 		
 		OrderDetails orderDetails = new OrderDetails();
 
@@ -82,7 +82,7 @@ public class ConfirmOrderServiceImpl implements ConfirmOrderService {
 		ResponseData responseData = new ResponseData();
 		responseData.setData(orderHistoryDto);
 		responseData.setHttpStatus(HttpStatus.OK);
-		return orderDetails; 
+		return responseData; 
 		
 	}
 

@@ -1,10 +1,10 @@
 package com.hcl.stocktrading.service;
 
 import com.hcl.stocktrading.dto.ConfirmOrderDto;
-import com.hcl.stocktrading.entity.OrderDetails;
+import com.hcl.stocktrading.dto.ResponseData;
 
 public interface ConfirmOrderService {
 	
-	public OrderDetails confirmOrder(ConfirmOrderDto confirmOrderDto);
+	public ResponseData confirmOrder(ConfirmOrderDto confirmOrderDto);
 
 }
