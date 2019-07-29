@@ -17,9 +17,24 @@ public class HistoryServiceImpl {
 
 	@Autowired
 	private OrderDetailsRepository orderDetailsRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
+<<<<<<< HEAD
+
+	public ResponseData getPastOrders(OrderHistoryDto orderHistoryDto) {
+		ResponseData response = new ResponseData();
+		Optional<User> userOptional = userRepository.findById(orderHistoryDto.getUserId());
+
+		if (userOptional.isPresent()) {
+			User user = userOptional.get();
+			response.setHttpStatus(HttpStatus.OK);
+			response.setMessage("The list of purchsded stuck");
+			response.setData(user.getOrderDetails());
+		} else {
+			response.setHttpStatus(HttpStatus.BAD_REQUEST);
+			response.setMessage("Incorrect UserId");
+=======
 	
 	public  ResponseData getPastOrders(OrderHistoryDto orderHistoryDto)
 	{     
@@ -30,11 +45,14 @@ public class HistoryServiceImpl {
 			response.setHttpStatus(HttpStatus.NOT_FOUND);
 			response.setMessage("Wrong UserId");
 			
+>>>>>>> 7a057dd8c84e91de66c5714ba5c3eb497a6e10ed
 		}
-		
 		return response;
-		
-		
 	}
+<<<<<<< HEAD
+
+}
+=======
 		
 }
+>>>>>>> 7a057dd8c84e91de66c5714ba5c3eb497a6e10ed
