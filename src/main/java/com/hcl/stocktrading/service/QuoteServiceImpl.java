@@ -30,10 +30,7 @@ public class QuoteServiceImpl implements QuoteService {
 			quoteOrderDto.setTotalAmount(orderDetails.getTotalAmount());
 			quoteOrderDto.setStockPurchasePrice(orderDetails.getStockPurchasePrice());
 			quoteOrderDto.setOrderId(orderDetails.getOrderId());
-			Stocks stock = orderDetailsRepository.findByStockId(ordeOptional.get());
-			if (stock != null) {
-				quoteOrderDto.setStockPrice(stock.getPrice());
-			}
+			quoteOrderDto.setStockPrice(orderDetails.getStockId().getPrice());
 			orderDetailsRepository.save(orderDetails);
 			responseData.setData(quoteOrderDto);
 			responseData.setHttpStatus(HttpStatus.OK);
