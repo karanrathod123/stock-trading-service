@@ -15,11 +15,11 @@ import com.hcl.stocktrading.service.QuoteService;
 public class QuoteOrderController {
 
 	@Autowired
-	private QuoteService QuoteService;
+	private QuoteService quoteService;
 
 	@PutMapping("/")
 	public ResponseEntity<Object> quoteOrder(@RequestParam Long orderId) {
-		return new ResponseEntity<Object>(QuoteService.quoteOrder(orderId), HttpStatus.OK);
+		return new ResponseEntity<>(quoteService.quoteOrder(orderId), HttpStatus.OK);
 
 	}
 }
