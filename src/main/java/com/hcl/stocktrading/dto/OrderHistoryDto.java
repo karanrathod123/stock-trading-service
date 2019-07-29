@@ -1,7 +1,5 @@
 package com.hcl.stocktrading.dto;
 
-import com.hcl.stocktrading.entity.Stocks;
-
 import lombok.Data;
 
 @Data
