@@ -1,5 +1,6 @@
 package com.hcl.stocktrading.repository;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +23,8 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
 	public void save(QuoteOrderDto quoteOrderDto);
 
 	public Stocks findByStockId(OrderDetails orderDetails);
+
+
+
 
 }
