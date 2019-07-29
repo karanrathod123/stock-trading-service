@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,7 +25,7 @@ public class User {
 	
 	private String email;
 	
-	@OneToOne(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId")
 	@JsonIgnore
 	private OrderDetails orderDetails;
 }
