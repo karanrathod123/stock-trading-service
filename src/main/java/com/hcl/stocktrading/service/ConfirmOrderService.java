@@ -5,18 +5,18 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.stocktrading.dto.ConfirmOrderDto;
 import com.hcl.stocktrading.entity.OrderDetails;
-import com.hcl.stocktrading.repository.ConfirmOrderRepository;
-import com.hcl.stocktrading.repository.StockRepository;
+import com.hcl.stocktrading.repository.OrderDetailsRepository;
+import com.hcl.stocktrading.repository.StocksRepository;
 import com.hcl.stocktrading.repository.UserRepository;
 
 @Service
 public class ConfirmOrderService {
 
 	@Autowired
-	ConfirmOrderRepository confirmOrderRepository;
+	OrderDetailsRepository confirmOrderRepository;
 	
 	@Autowired
-	StockRepository stockRepository;
+	StocksRepository stockRepository;
 	
 	@Autowired
 	UserRepository userRepository;
