@@ -47,6 +47,8 @@ public class ConfirmOrderServiceImplTest {
 	List<OrderDetails> list;
 	OrderHistoryDto orderHistoryDto;
 	
+	ResponseData responseData;
+	
 	@Before
 	public void setUp() throws Exception {
 		confirmOrderDto = new ConfirmOrderDto();
@@ -83,11 +85,13 @@ public class ConfirmOrderServiceImplTest {
 		
 		orderHistoryDto = new OrderHistoryDto();
 		orderHistoryDto.setFees(100.00);
-		orderHistoryDto.setOrderId(1L);
 		orderHistoryDto.setPurchasedVolume(100L);
 		orderHistoryDto.setStockPrice(1000.0);
 		orderHistoryDto.setStockPurchasePrice(100000.0);
 		orderHistoryDto.setTotalAmount(100100.0);
+		
+		responseData= new ResponseData();
+		responseData.setData(orderHistoryDto);
 		
 	}
 
@@ -97,7 +101,7 @@ public class ConfirmOrderServiceImplTest {
 		Mockito.when(userRepository.findByUserId(1L)).thenReturn(user);
 		
 		ResponseData expected = confirmOrderServiceImpl.confirmOrder(confirmOrderDto);
-		assertEquals(orderDetails, expected.getData());
+		assertEquals(orderHistoryDto, expected.getData());
 	}
 	
 	@Test(expected=ResourceNotFoundException.class)
