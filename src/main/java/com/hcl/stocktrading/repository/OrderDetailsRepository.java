@@ -13,13 +13,6 @@ import com.hcl.stocktrading.entity.Stocks;
 
 @Repository
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long> {
-
-	public List<OrderDetails> findByUserId(OrderHistoryDto userId);
-
-	public Object findById(int i); 
-
-	public void save(QuoteOrderDto quoteOrderDto);
-
 	public Stocks findByStockId(OrderDetails orderDetails);
 
 }
