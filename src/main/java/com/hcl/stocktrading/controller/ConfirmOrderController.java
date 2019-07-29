@@ -16,11 +16,11 @@ import com.hcl.stocktrading.service.ConfirmOrderService;
 public class ConfirmOrderController {
 
 	@Autowired
-	ConfirmOrderService confirmOrderService;
+	private ConfirmOrderService confirmOrderServiceImpl;
 	
 	@PostMapping()
 	public ResponseEntity<OrderDetails> confirmOrder(ConfirmOrderDto confirmOrderDto){
-		return new ResponseEntity<>(confirmOrderService.confirmOrder(confirmOrderDto) ,HttpStatus.OK);
+		return new ResponseEntity<>(confirmOrderServiceImpl.confirmOrder(confirmOrderDto) ,HttpStatus.OK);
 	}
 	
 }

@@ -19,7 +19,7 @@ import com.hcl.stocktrading.repository.StocksRepository;
 import com.hcl.stocktrading.repository.UserRepository;
 
 @Service
-public class ConfirmOrderServiceImpl {
+public class ConfirmOrderServiceImpl implements ConfirmOrderService {
 
 	@Autowired
 	OrderDetailsRepository orderDetailsRepository;
@@ -30,6 +30,7 @@ public class ConfirmOrderServiceImpl {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Override
 	public OrderDetails confirmOrder(ConfirmOrderDto confirmOrderDto) {
 		
 		OrderDetails orderDetails = new OrderDetails();
