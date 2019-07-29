@@ -6,24 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.hcl.stocktrading.dto.OrderHistoryDto;
 import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.User;
-import com.hcl.stocktrading.repository.OrderDetailsRepository;
 import com.hcl.stocktrading.repository.UserRepository;
 
 @Service
-public class HistoryServiceImpl {
-
-	@Autowired
-	private OrderDetailsRepository orderDetailsRepository;
+public class HistoryServiceImpl implements HistoryService {
 
 	@Autowired
 	private UserRepository userRepository;
 
-	public ResponseData getPastOrders(OrderHistoryDto orderHistoryDto) {
+	@Override
+	public ResponseData getPastOrders(Long userId) {
 		ResponseData response = new ResponseData();
-		Optional<User> userOptional = userRepository.findById(orderHistoryDto.getUserId());
+		Optional<User> userOptional = userRepository.findById(userId);
 
 		if (userOptional.isPresent()) {
 			User user = userOptional.get();
