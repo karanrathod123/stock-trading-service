@@ -11,5 +11,5 @@ public class OrderHistoryDto {
 	private Double fees;
 	private Double totalAmount;
 	private Long purchasedVolume;
-	
+
 }
