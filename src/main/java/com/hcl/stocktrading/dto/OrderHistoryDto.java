@@ -5,11 +5,10 @@ import lombok.Data;
 @Data
 public class OrderHistoryDto {
 
-	private Long userId;
 	private Long orderId;
-	private Long stockId;
+	private Double stockPrice;
 	private Double stockPurchasePrice;
-	private double feesAmount;
+	private Double fees;
 	private Double totalAmount;
-	private Integer purchasedVolume;
+	private Long purchasedVolume;
 }
