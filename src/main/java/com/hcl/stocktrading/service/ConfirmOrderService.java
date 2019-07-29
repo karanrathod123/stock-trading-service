@@ -34,8 +34,14 @@ public class ConfirmOrderService {
 		OrderDetails orderDetails = new OrderDetails();
 
 		Stocks stocks = stocksRepository.findByStockId(confirmOrderDto.getStockId());
+		if(null == stocks) {
+			throw new ResourceNotFoundException("Stock doesn't found for stock id: "+ confirmOrderDto.getStockId());
+		}
 		
 		User user = userRepository.findByUserId(confirmOrderDto.getUserId());
+		if(null == user) {
+			throw new ResourceNotFoundException("User doesn't found for user id: "+ confirmOrderDto.getUserId());
+		}
 		
 		orderDetails.setStockId(stocks);
 		orderDetails.setPurchasedVolume(confirmOrderDto.getPurchaseVolume());
