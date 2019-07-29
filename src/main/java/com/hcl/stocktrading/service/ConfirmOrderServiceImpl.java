@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.hcl.stocktrading.dto.ConfirmOrderDto;
+import com.hcl.stocktrading.dto.OrderHistoryDto;
 import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.OrderDetails;
 import com.hcl.stocktrading.entity.Stocks;
@@ -69,8 +70,16 @@ public class ConfirmOrderServiceImpl {
 		
 		orderDetailsRepository.save(orderDetails);
 		
+		OrderHistoryDto orderHistoryDto = new OrderHistoryDto();
+		orderHistoryDto.setFees(orderDetails.getFees());
+		orderHistoryDto.setOrderId(orderDetails.getOrderId());
+		orderHistoryDto.setPurchasedVolume(orderDetails.getPurchasedVolume());
+		orderHistoryDto.setStockPrice(stocks.getPrice());
+		orderHistoryDto.setStockPurchasePrice(orderDetails.getStockPurchasePrice());
+		orderHistoryDto.setTotalAmount(orderDetails.getTotalAmount());
+		
 		ResponseData responseData = new ResponseData();
-		responseData.setData(orderDetails);
+		responseData.setData(orderHistoryDto);
 		responseData.setHttpStatus(HttpStatus.OK);
 		return orderDetails; 
 		
