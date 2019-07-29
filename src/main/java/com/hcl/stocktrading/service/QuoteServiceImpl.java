@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.hcl.stocktrading.dto.QuoteOrderDto;
 import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.OrderDetails;
-import com.hcl.stocktrading.entity.Stocks;
 import com.hcl.stocktrading.repository.OrderDetailsRepository;
 
 @Service
