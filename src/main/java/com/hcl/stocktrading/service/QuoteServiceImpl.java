@@ -35,6 +35,9 @@ public class QuoteServiceImpl implements QuoteService {
 			responseData.setData(quoteOrderDto);
 			responseData.setHttpStatus(HttpStatus.OK);
 			responseData.setMessage("Updated Stocks are as shown");
+		} else {
+			responseData.setHttpStatus(HttpStatus.BAD_REQUEST);
+			responseData.setMessage("Incorrect order Id...! ");
 		}
 
 		return responseData;
