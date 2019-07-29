@@ -1,19 +1,19 @@
 package com.hcl.stocktrading.service;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.query.criteria.internal.expression.SearchedCaseExpression.WhenClause;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.hcl.stocktrading.dto.ResponseData;
 import com.hcl.stocktrading.entity.Stocks;
 import com.hcl.stocktrading.repository.StocksRepository;
 
@@ -21,7 +21,7 @@ import com.hcl.stocktrading.repository.StocksRepository;
 public class StockServiceImplTest {
 
 	@InjectMocks
-	private StockService stockServiceImpl;
+	private StockServiceImpl stockServiceImpl;
 	
 	@Mock
 	private StocksRepository stocksRepository;
@@ -39,6 +39,14 @@ public class StockServiceImplTest {
 	@Test
 	public void testGetAllStocksForPostive() {
 		when(stocksRepository.findAll()).thenReturn(stockList);
-		stockServiceImpl.getAllStocks();
+		ResponseData response = stockServiceImpl.getAllStocks();
+		assertNotNull(response);
+	}
+	
+	@Test
+	public void testGetAllStocksForNegative() {
+		when(stocksRepository.findAll()).thenReturn(null);
+		ResponseData response = stockServiceImpl.getAllStocks();
+		assertNotNull(response);
 	}
 }

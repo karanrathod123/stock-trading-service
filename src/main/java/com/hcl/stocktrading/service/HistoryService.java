@@ -5,5 +5,5 @@ import com.hcl.stocktrading.dto.ResponseData;
 
 public interface HistoryService {
 
-	public ResponseData getPastOrders(OrderHistoryDto orderHistoryDto);
+	public ResponseData getPastOrders(Long userId);
 }
