@@ -7,6 +7,7 @@ import com.hcl.stocktrading.dto.ConfirmOrderDto;
 import com.hcl.stocktrading.entity.OrderDetails;
 import com.hcl.stocktrading.entity.Stocks;
 import com.hcl.stocktrading.entity.User;
+import com.hcl.stocktrading.enumeration.OrderStatus;
 import com.hcl.stocktrading.exception.ResourceNotFoundException;
 import com.hcl.stocktrading.repository.OrderDetailsRepository;
 import com.hcl.stocktrading.repository.StocksRepository;
@@ -37,29 +38,30 @@ public class ConfirmOrderService {
 		orderDetails.setUserId(user);
 		
 		Double marketPrice = stocks.getPrice();
+		Double fees= 0.0 ; 
 		
 		if(confirmOrderDto.getPurchaseVolume()<500) {
 			Double percentage = (marketPrice*0.10)/100;
-			Double fees = percentage*confirmOrderDto.getPurchaseVolume();
+			fees = percentage*confirmOrderDto.getPurchaseVolume();
 			orderDetails.setFees(fees);
 		}
 		else if(confirmOrderDto.getPurchaseVolume()>=500) {
 			Double percentage = (marketPrice*0.15)/100;
 			Double per100Shares = confirmOrderDto.getPurchaseVolume()/100*1.0;
-			Double fees = percentage*stocks.getPrice()*per100Shares;
+			fees = percentage*stocks.getPrice()*per100Shares;
 			orderDetails.setFees(fees);
 		}
 		else {
 			throw new ResourceNotFoundException("Please enter valid purchaseVolume");
 		}
 		
-		orderDetails.getStatus();
-		
+		orderDetails.setStatus(OrderStatus.PENDING.getStatus());
+		Double stockPurchasePrice = marketPrice*confirmOrderDto.getPurchaseVolume();
+		orderDetails.setStockPurchasePrice(stockPurchasePrice);
+		orderDetails.setTotalAmount(fees+stockPurchasePrice);
 		
 		return orderDetails; 
 		
 	}
-
-	
 	
 }
