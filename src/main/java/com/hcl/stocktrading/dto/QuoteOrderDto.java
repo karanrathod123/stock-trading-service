@@ -3,13 +3,12 @@ package com.hcl.stocktrading.dto;
 import lombok.Data;
 
 @Data
-public class OrderHistoryDto {
+public class QuoteOrderDto {
 
-	private Long userId;
 	private Long orderId;
-	private Long stockId;
+	private Double stockPrice;
 	private Double stockPurchasePrice;
-	private double feesAmount;
+	private Double fees;
 	private Double totalAmount;
-	private Integer purchasedVolume;
+	private Long purchaseVolume;
 }
