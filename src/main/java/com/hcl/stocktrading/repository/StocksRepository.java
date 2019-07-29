@@ -8,4 +8,6 @@ import com.hcl.stocktrading.entity.Stocks;
 @Repository
 public interface StocksRepository extends JpaRepository<Stocks, Long>{
 
+	public Stocks findByStockId(Long id);
+	
 }

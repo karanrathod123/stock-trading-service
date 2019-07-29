@@ -24,7 +24,7 @@ public class OrderDetails {
 	@OneToOne
 	private Stocks stockId;
 	
-	private String status;
+	private Integer status;
 	
 	private Long purchasedVolume;
 	
