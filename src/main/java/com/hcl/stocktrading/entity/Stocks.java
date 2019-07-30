@@ -1,5 +1,6 @@
 package com.hcl.stocktrading.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,4 @@ public class Stocks {
 	
 	private String stockType;
 
-	@OneToOne(mappedBy = "stockId")
-	@JsonIgnore
-	private OrderDetails orderDetails;
 }
